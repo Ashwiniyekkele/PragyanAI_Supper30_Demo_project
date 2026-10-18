@@ -30,7 +30,7 @@ st.title(f"📈 {APP_TITLE}")
 st.markdown(f"*{APP_SUBTITLE}*")
 st.markdown("---")
 # Project Introduction & Methodology Guardrails
-col_intro, col_provenance = st.columns([3, 2])"""
+col_intro, col_provenance = st.columns([3, 2])
 Job Demand and Sector Analytics
 Main Streamlit Application - Overview Page
 """
