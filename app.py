@@ -2,6 +2,38 @@
 Job Demand and Sector Analytics
 Main Streamlit Application - Overview Page
 """
+import sys
+from pathlib import Path
+# Ensure project root is in sys.path for Streamlit Cloud and portability
+ROOT_DIR = Path(__file__).resolve().parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+import streamlit as st
+import pandas as pd
+from typing import Dict, Any
+from config.settings import APP_TITLE, APP_SUBTITLE, BENCHMARK_DISTRICT
+from src.ui_helpers import get_cached_dataset, render_sidebar_header, render_global_filters
+from src.indicator_classification import get_indicator_definition
+from src.reporting import generate_evidence_summary
+st.set_page_config(
+    page_title=f"{APP_TITLE} | Overview",
+    page_icon="📈",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+# Load data
+raw_unified_df, validation_reports = get_cached_dataset()
+# Render global filters in sidebar
+filtered_df = render_global_filters(raw_unified_df)
+# Page Header
+st.title(f"📈 {APP_TITLE}")
+st.markdown(f"*{APP_SUBTITLE}*")
+st.markdown("---")
+# Project Introduction & Methodology Guardrails
+col_intro, col_provenance = st.columns([3, 2])"""
+Job Demand and Sector Analytics
+Main Streamlit Application - Overview Page
+"""
 
 import streamlit as st
 import pandas as pd
